@@ -1,7 +1,9 @@
-import Expenses from './components/Expenses'
-import './components/Expenses.css'
+// legacy
+//import React from 'react'
 
-function App() {
+import Expenses from './components/Expenses/Expenses'
+
+const App = () => {
   const expenses = [
     {
       id: 'e1',
@@ -29,11 +31,21 @@ function App() {
     }
   ];
 
+  // *** legacy: without JSX syntax ***
+  // return React.createElement(
+  //   'div',
+  //   {},
+  //   React.createElement('h2', {}, "Let\'s get started!"),
+  //   React.createElement(Expenses, { items: expenses })
+  // );
+
+  // 하나 이상의 컴포넌트를 리턴할 수 없는 이유는 위에서 찾을 수 있다.
+  // 결국 리턴해야 하는 것은 하나의 객체이기 때문
   return (
     <div>
       <h2>Let's get started!</h2>
       <Expenses expenses={expenses} />
-    </div >
+    </div>
   );
 }
 
