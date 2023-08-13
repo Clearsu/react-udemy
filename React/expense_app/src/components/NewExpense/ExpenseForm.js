@@ -65,11 +65,12 @@ const ExpenseForm = (props) => {
     event.preventDefault(); // 기본 동작인 GET 요청 막음
     const expenseData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount,
       date: new Date(enteredDate),
     };
 
     props.onSaveExpenseData(expenseData); // 부모 컴포넌트로 데이타 전달
+    props.onStopEditing();
     setEnteredTitle("");
     setEnteredAmount("");
     setEnteredDate("");
@@ -115,6 +116,9 @@ const ExpenseForm = (props) => {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button type="button" onClick={props.onStopEditing}>
+          Cancle
+        </button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
